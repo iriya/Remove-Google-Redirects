@@ -187,6 +187,7 @@ Copyright (C) <2012>  <Abhijeet Ashok Muneshwar(openingknots@gmail.com)>
 			console.debug('Redirection of ['+ url +'] is now removed.');
 		}
 		do_not_track.call(this);
+		open_in_new_win.call(this);
 		// try to expand shorten url
 		expand_short_url(url || this.href, (function (obj) {
 			return function (url) {
@@ -203,6 +204,11 @@ Copyright (C) <2012>  <Abhijeet Ashok Muneshwar(openingknots@gmail.com)>
 	function do_not_track() {
 		// add no follow
 		if (!this.getAttribute("rel")) this.setAttribute("rel", "noreferrer");
+	}
+
+	function open_in_new_win() {
+		// make links open in new window
+		if(!this.getAttribute("target")) this.setAttribute("target", "_blank");
 	}
 	
 	// listen to specific event
